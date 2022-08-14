@@ -2,6 +2,7 @@ import { useCallback, useMemo, useState } from "react";
 import { Button, Flex, RockerFont, Text, Tile } from "../../../../components";
 import { runEquation } from "../../utils";
 import { AttemptsBoard } from "../AttemptsBoard";
+import { Legend } from "../Legend";
 import { GameBoardComponent } from "./GameBoard.types";
 
 export const GameBoard: GameBoardComponent = ({
@@ -79,63 +80,70 @@ export const GameBoard: GameBoardComponent = ({
   ]);
 
   return (
-    <Flex flexDirection="column" gap="3rem" alignItems="center">
-      <Flex flexDirection="column" alignItems="center" gap="0.25rem">
-        <RockerFont>
-          <Text fontSize="3rem" fontWeight="bold">
-            Brain burner
+    <>
+      <Flex flexDirection="column" gap="3rem" alignItems="center">
+        <Flex flexDirection="column" alignItems="center" gap="0.25rem">
+          <RockerFont>
+            <Text fontSize="3rem" fontWeight="bold">
+              Brain burner
+            </Text>
+          </RockerFont>
+
+          <Text fontWeight="bold" color="secondary">
+            Find the equation that results in {result}
           </Text>
-        </RockerFont>
+        </Flex>
 
-        <Text fontWeight="bold" color="secondary">
-          Find the equation that results in {result}
-        </Text>
-      </Flex>
+        <Flex flexDirection="column" gap="1rem">
+          {!!equationAttempts.length && (
+            <AttemptsBoard attempts={equationAttempts} equation={equation} />
+          )}
 
-      <Flex flexDirection="column" gap="1rem">
-        {!!equationAttempts.length && (
-          <AttemptsBoard attempts={equationAttempts} equation={equation} />
+          <Flex gap="1rem">
+            {equation.split("").map((_, index) => (
+              <Tile variant={hasWrongResult ? "error" : "default"} key={index}>
+                {currentAttempt[index]}
+              </Tile>
+            ))}
+          </Flex>
+        </Flex>
+
+        <Flex flexDirection="column" gap="0.5rem" data-testid="keyboard">
+          <Flex gap="0.5rem" justifyContent="center">
+            {allowedNumbers.map((number) => (
+              <Button
+                key={number}
+                onClick={() => addCharacterToAttempt(number)}
+              >
+                {number}
+              </Button>
+            ))}
+          </Flex>
+
+          <Flex gap="0.5rem" justifyContent="center">
+            <Button onClick={removeCharacterFromAttempt}>Delete</Button>
+
+            {allowedOperators.map((operator) => (
+              <Button
+                key={operator}
+                onClick={() => addCharacterToAttempt(operator)}
+              >
+                {operator}
+              </Button>
+            ))}
+
+            <Button onClick={handleOnPressSubmit}>Enter</Button>
+          </Flex>
+        </Flex>
+
+        {hasWrongResult && (
+          <Text color="error" fontWeight="bold">
+            Wrong result
+          </Text>
         )}
-
-        <Flex gap="1rem">
-          {equation.split("").map((_, index) => (
-            <Tile variant={hasWrongResult ? "error" : "default"} key={index}>
-              {currentAttempt[index]}
-            </Tile>
-          ))}
-        </Flex>
       </Flex>
 
-      <Flex flexDirection="column" gap="0.5rem" data-testid="keyboard">
-        <Flex gap="0.5rem" justifyContent="center">
-          {allowedNumbers.map((number) => (
-            <Button key={number} onClick={() => addCharacterToAttempt(number)}>
-              {number}
-            </Button>
-          ))}
-        </Flex>
-
-        <Flex gap="0.5rem" justifyContent="center">
-          <Button onClick={removeCharacterFromAttempt}>Delete</Button>
-
-          {allowedOperators.map((operator) => (
-            <Button
-              key={operator}
-              onClick={() => addCharacterToAttempt(operator)}
-            >
-              {operator}
-            </Button>
-          ))}
-
-          <Button onClick={handleOnPressSubmit}>Enter</Button>
-        </Flex>
-      </Flex>
-
-      {hasWrongResult && (
-        <Text color="error" fontWeight="bold">
-          Wrong result
-        </Text>
-      )}
-    </Flex>
+      <Legend />
+    </>
   );
 };
