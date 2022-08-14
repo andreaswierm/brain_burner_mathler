@@ -1,0 +1,1 @@
+export { InvalidEquationError } from "./InvalidEquationError";
