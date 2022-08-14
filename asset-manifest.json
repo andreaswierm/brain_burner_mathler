@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/brain_burner_mathler/static/css/main.e6c13ad2.css",
+    "main.js": "/brain_burner_mathler/static/js/main.98266e3b.js",
+    "static/js/787.1d34c090.chunk.js": "/brain_burner_mathler/static/js/787.1d34c090.chunk.js",
+    "index.html": "/brain_burner_mathler/index.html",
+    "main.e6c13ad2.css.map": "/brain_burner_mathler/static/css/main.e6c13ad2.css.map",
+    "main.98266e3b.js.map": "/brain_burner_mathler/static/js/main.98266e3b.js.map",
+    "787.1d34c090.chunk.js.map": "/brain_burner_mathler/static/js/787.1d34c090.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.98266e3b.js"
+  ]
+}
