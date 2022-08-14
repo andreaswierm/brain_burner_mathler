@@ -1,12 +1,6 @@
 import styled, { css } from "styled-components";
 import { TextColor, TextComponent, TextProps } from "./Text.types";
 
-const colorMap: Record<TextColor, string> = {
-  primary: "#212121",
-  secondary: "#757575",
-  error: "red",
-};
-
 export const Text: TextComponent = styled.span<TextProps>`
   ${({
     theme,
@@ -14,6 +8,12 @@ export const Text: TextComponent = styled.span<TextProps>`
     fontWeight = "normal",
     color = "primary",
   }) => {
+    const colorMap: Record<TextColor, string> = {
+      primary: theme.textPrimary,
+      secondary: theme.textSecondary,
+      error: theme.error,
+    };
+
     return css`
       font-size: ${fontSize};
       font-weight: ${fontWeight};

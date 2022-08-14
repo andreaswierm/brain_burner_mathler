@@ -1,4 +1,4 @@
-import { Button, Flex, Text } from "../../../../components";
+import { Button, Flex, RockerFont, Text } from "../../../../components";
 import { WinnerGameSceneComponent } from "./WinnerGameScene.types";
 
 export const WinnerGameScene: WinnerGameSceneComponent = ({
@@ -6,9 +6,11 @@ export const WinnerGameScene: WinnerGameSceneComponent = ({
 }) => {
   return (
     <Flex flexDirection="column" alignItems="center" gap="1rem">
-      <Text fontSize="5rem" fontWeight="bold">
-        You WON
-      </Text>
+      <RockerFont>
+        <Text fontSize="5rem" fontWeight="bold">
+          You WON
+        </Text>
+      </RockerFont>
 
       <Flex gap="1rem">
         <Button onClick={onClickNewGame}>New game</Button>

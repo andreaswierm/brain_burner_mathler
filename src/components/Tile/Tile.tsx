@@ -2,24 +2,25 @@ import styled, { css, FlattenSimpleInterpolation } from "styled-components";
 import { TileComponent, TileProps, TileVariant } from "./Tile.types";
 
 export const Tile: TileComponent = styled.div<TileProps>`
-  ${({ variant = "default" }) => {
+  ${({ variant = "default", theme }) => {
     const variantStyle: Record<TileVariant, FlattenSimpleInterpolation> = {
       default: css`
-        border: 0.25rem solid lightgray;
+        border: 0.25rem solid ${theme.textPrimary};
+        color: ${theme.textPrimary};
       `,
       secondary: css`
-        background-color: gray;
-        border: 0.25rem solid gray;
-        color: white;
+        background-color: ${theme.secondary};
+        border: 0.25rem solid ${theme.secondary};
+        color: ${theme.onSecondary};
       `,
       success: css`
-        background-color: green;
-        border: 0.25rem solid green;
-        color: white;
+        background-color: ${theme.success};
+        border: 0.25rem solid ${theme.success};
+        color: ${theme.onSuccess};
       `,
       error: css`
-        border: 0.25rem solid red;
-        color: red;
+        border: 0.25rem solid ${theme.error};
+        color: ${theme.error};
       `,
     };
 

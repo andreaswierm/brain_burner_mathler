@@ -1,8 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { ThemeProvider } from "styled-components";
 import "./index.css";
 import { DailyGameBoardPage } from "./pages/DailyGameBoardPage";
 import reportWebVitals from "./reportWebVitals";
+import { rockTheme } from "./theme";
 import { findRandomEquation } from "./utils";
 
 const root = ReactDOM.createRoot(
@@ -10,7 +12,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <DailyGameBoardPage equationFetcher={() => findRandomEquation()} />
+    <ThemeProvider theme={rockTheme}>
+      <DailyGameBoardPage equationFetcher={() => "100+10"} />
+    </ThemeProvider>
   </React.StrictMode>
 );
 

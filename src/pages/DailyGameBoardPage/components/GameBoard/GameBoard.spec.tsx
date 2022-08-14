@@ -1,5 +1,7 @@
 import { fireEvent, render, within } from "@testing-library/react";
+import { ThemeProvider } from "styled-components";
 import { GameBoard } from ".";
+import { rockTheme } from "../../../../theme";
 
 const typeInKeyboard = (keyboard: HTMLElement, equation: string) => {
   equation.split("").forEach((character) => {
@@ -13,12 +15,14 @@ describe("<GameBoard />", () => {
     const onWinSpy = jest.fn();
 
     const { getByTestId, getByText } = render(
-      <GameBoard
-        equation="119-41"
-        numberOfAttempts={6}
-        onLose={onLoseSpy}
-        onWin={onWinSpy}
-      />
+      <ThemeProvider theme={rockTheme}>
+        <GameBoard
+          equation="119-41"
+          numberOfAttempts={6}
+          onLose={onLoseSpy}
+          onWin={onWinSpy}
+        />
+      </ThemeProvider>
     );
 
     const keyboard = getByTestId("keyboard");
@@ -36,12 +40,14 @@ describe("<GameBoard />", () => {
     const onWinSpy = jest.fn();
 
     const { getByTestId, getByText } = render(
-      <GameBoard
-        equation="119-41"
-        numberOfAttempts={2}
-        onLose={onLoseSpy}
-        onWin={onWinSpy}
-      />
+      <ThemeProvider theme={rockTheme}>
+        <GameBoard
+          equation="119-41"
+          numberOfAttempts={2}
+          onLose={onLoseSpy}
+          onWin={onWinSpy}
+        />
+      </ThemeProvider>
     );
 
     const keyboard = getByTestId("keyboard");
@@ -63,12 +69,14 @@ describe("<GameBoard />", () => {
     const onWinSpy = jest.fn();
 
     const { getByTestId, getByText } = render(
-      <GameBoard
-        equation="119-41"
-        numberOfAttempts={2}
-        onLose={onLoseSpy}
-        onWin={onWinSpy}
-      />
+      <ThemeProvider theme={rockTheme}>
+        <GameBoard
+          equation="119-41"
+          numberOfAttempts={2}
+          onLose={onLoseSpy}
+          onWin={onWinSpy}
+        />
+      </ThemeProvider>
     );
 
     const keyboard = getByTestId("keyboard");

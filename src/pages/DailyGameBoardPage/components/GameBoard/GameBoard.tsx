@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useState } from "react";
-import { Button, Flex, Text, Tile } from "../../../../components";
+import { Button, Flex, RockerFont, Text, Tile } from "../../../../components";
 import { runEquation } from "../../utils";
 import { AttemptsBoard } from "../AttemptsBoard";
 import { GameBoardComponent } from "./GameBoard.types";
@@ -81,9 +81,11 @@ export const GameBoard: GameBoardComponent = ({
   return (
     <Flex flexDirection="column" gap="3rem" alignItems="center">
       <Flex flexDirection="column" alignItems="center" gap="0.25rem">
-        <Text fontSize="3rem" fontWeight="bold">
-          Brain burner
-        </Text>
+        <RockerFont>
+          <Text fontSize="3rem" fontWeight="bold">
+            Brain burner
+          </Text>
+        </RockerFont>
 
         <Text fontWeight="bold" color="secondary">
           Find the equation that results in {result}
@@ -129,7 +131,11 @@ export const GameBoard: GameBoardComponent = ({
         </Flex>
       </Flex>
 
-      {hasWrongResult && <Text color="error">Wrong result</Text>}
+      {hasWrongResult && (
+        <Text color="error" fontWeight="bold">
+          Wrong result
+        </Text>
+      )}
     </Flex>
   );
 };
